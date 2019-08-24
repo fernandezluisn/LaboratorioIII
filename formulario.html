@@ -1,17 +1,54 @@
 <html>
-<head>Login</head>
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+<script type="text/javascript">
+
+var nombre;
+nombre="Matias";
+nombre=123;
+//no tipado e interpretado
+if(nombre==="123")//existen doble = y triple =. no existen clases
+{
+alert("El nombre es 123");
+}else
+{
+    alert("no es 123");
+}
+sumar(1,"adas");
+sumar(1,2);
+sumar(1);
 
 
+function sumar(num1, num2){
+    console.log(num1);
+    console.log(num2);
+    console.log("se ejecuto");
+    alert(num1+num2);
+}
 
-<form>        
+function Mostrar()
+{
+    var m=document.getElementById("texto1").value;
+    var p=document.getElementById("p1").value;
+    if(m=="arena" || p=="1234")
+    alert("què password malo");
+}
+
+</script>    
+</head>
+
+<p>Login</p>
+
+<!---form-->        
             <p>Usuario</p>
             <input type="text" size="20" id="texto1" maxlength="8">            
             <p>Contraseña:</p>            
-            <input type="password">
+            <input type="password" id="p1">
             <br>
             <input type="checkbox" name="op1" value="opcion 1" checked>Recordar usuario y contraseña
 <br>
-            <input type="button" name="btnEnviar" value="Enviar">
+            <input type="button" name="btnEnviar" value="Enviar" onclick="Mostrar()">
             <input type="button" name="btnLimpiar" value="Limpiar">
-            
+<!---/form-->      
 </html>
