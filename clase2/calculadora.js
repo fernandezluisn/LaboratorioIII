@@ -32,3 +32,9 @@ function sumarYguardar()
     var cel2=row.insertCell(2);
     var cel3=row.insertCell(3);
 }
+
+function $(id)
+{
+    var num1=document.getElementById(id);
+    return num1;
+}
