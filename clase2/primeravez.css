@@ -1,0 +1,27 @@
+body{
+    background-color: rgb(30, 189, 133);
+}
+h1,h2{
+    color:rgba(0, 0, 0, 0.815)
+}
+p{
+    color:rebeccapurple;
+}
+p.negrita{
+    font: large;
+    margin-left: 3;
+}
+
+.claseLoca{
+    color: rgba(85, 64, 27, 0.856);
+    font-style: italic;
+}
+
+.boton{
+    background-color: rgb(12, 17, 3);
+    color:white;
+    height: 90 px;
+    width: 120 px;
+    border-radius: 7 px;
+    margin-bottom: 10 px;
+}
