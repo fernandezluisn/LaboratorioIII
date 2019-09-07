@@ -1,0 +1,19 @@
+﻿css 
+son todos los estilos que utilizamos para diseñar. Posicionamiento es dídicil de entender. componentes:in line e inBox
+
+div: son contenedores sin màs propiedad que contener elementos. Por defecto ocupa el ancho de toda la pantalla, se estira segùn el contenido en el alto
+static=valor por defecto 100% ancho y lo que necesite de alto
+pueden ser relativos y mover uno sobre el otro
+
+pueden anclarse
+position=fixed, absolut o static hasta 2015
+
+bootstrap 4 usa flex que se adapta automaticamente
+flex-direction: por defecto es row, tambien estàn column, row reverse y clumn reverse
+justify contente: flex-start por defecto, flex-end, center, space between y space-around-- mueve izquierda a derecha 
+align-items=por defecto es stretch, flex start, center, baseline, flex-end-- mueve de arriba a abajo
+van todos sobre el padre y afecta a los hijos
+se usa para celulares
+
+flex-grow:se aplica a los hijos solo la que se le pone peso y reparte espacio en blanco
+
