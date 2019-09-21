@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    </head>
+    <script>
+
+/***************      AYAX     *****************/
+function anonima(){
+
+    
+
+    var http=new XMLHttpRequest();
+
+    http.onreadystatechange=function(){
+        console.log("llegó respuesta", http.readyState, http.status);
+
+        if(http.readyState==4){
+            if(http.status===200){
+                console.log("tenemos respuesta",http.responseText);
+                
+            }
+            /* funcion anonima. **/
+        }
+    }
+
+    var pass=document.getElementById("t1").value;
+        var name=document.getElementById("t2").value;
+
+        console.log(pass);
+        console.log(name);
+    http.open("GET","http://localhost:3000/loginUsuario?usr="+pass+"&pass="+name);
+    http.send();
+
+}
+
+function anonimaPost(){
+
+    
+
+var http=new XMLHttpRequest();
+
+http.onreadystatechange=function(){
+    console.log("llegó respuesta", http.readyState, http.status);
+
+document.getElementById("spiner").style.display="block";
+
+    if(http.readyState==4){
+        if(http.status===200){
+            console.log("tenemos respuesta",http.responseText);
+            
+        }
+        /* funcion anonima. **/
+    }
+}
+
+var pass=document.getElementById("t1").value;
+    var name=document.getElementById("t2").value;
+
+    console.log(pass);
+    console.log(name);
+
+    
+http.open("POST","http://localhost:3000/loginUsuario");/* por defecto es true**/
+/* En post lleva content type**/
+
+http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+http.send("usr="+pass+"&pass="+name);
+
+}
+
+
+    </script>
+<body>
+<p>Ingrese usuario</p>
+<input type="text" name="t1" id="t1">
+<p>Ingrese password</p>
+<input type="password" name="t2" id="t2"><br><br><br>
+
+<input type="button" value="Ingresar" name="b1" onclick="anonimaPost()">
+
+<div style="display: none" id="cargando">
+        <img source="./loading-2.gif" id="spiner">
+</div>
+</body>
+
+</html>
