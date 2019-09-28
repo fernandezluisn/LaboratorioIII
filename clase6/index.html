@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="exposure_neg_1">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport">
+        <style>
+                html{
+                
+                }
+                body{
+                   
+                }
+                header{
+                    
+                
+                }
+                
+                </style>
+</head>
+<script>
+    /*var persona={"nombre":"Nahuel", "edad": 29};
+
+    alert(persona.nombre);
+    alert(persona["edad"]);
+
+    var lista=[];//array
+    var lista=[persona, {"nombre": "juan", "edad": 33}];
+    alert(lista[1].nombre);
+    var p2=JSON.stringify(persona);//servidor devuelve asì:json.strigify. String
+    alert (JSON.parse(p2).nombre);//asì transformo a objeto el string json*/
+    
+    
+    
+    function listar(){    
+        var xml=new XMLHttpRequest();
+    xml.open("GET", "http://localhost:3000/personas");
+    xml.onreadystatechange=function(){
+        if(xml.readyState===4 && xml.status===200)
+        {
+            var s=xml.responseText;
+        
+    var lista=JSON.parse(s);
+
+        lista.forEach(function(persona){
+            document.getElementById("tbody").innerHTML += "<tr><td>" + persona.nombre + "</td><td>" + persona.apellido + "</td><td>" + persona.telefono + "</td><td>" + persona.fecha + "</td><td>borrar</td></tr>";
+        });
+        
+        }
+    }
+    xml.send();  
+    }
+
+    function agregar(){    
+        var xml=new XMLHttpRequest();
+    xml.open("POST", "http://localhost:3000/nuevaPersona");
+    xml.setRequestHeader("Content-Type", "application/JSON");
+
+             var nombre=document.getElementById("txtNombre").value;
+            var apellido=document.getElementById("txtApellido").value;
+            var fecha=document.getElementById("date").value;
+            var telefono=document.getElementById("txtTelefono").value;
+            
+            var pasar={"nombre": nombre, "apellido": apellido, "fecha": fecha, "telefono":telefono};
+            var p2=JSON.stringify(pasar);
+            
+            document.getElementById("tbody").innerHTML += "<tr><td>" + pasar.nombre + "</td><td>" + pasar.apellido + "</td><td>" + pasar.telefono + "</td><td>" + pasar.fecha + "</td><td>borrar</td></tr>";
+
+
+            xml.send(p2);
+
+            xml.onreadystatechange=function(){
+        if(xml.readyState===4 && xml.status===200)
+        {
+           
+            console.log(xml.responseText);
+    var resp=JSON.parse(xml.responseText);
+      alert(resp.respuesta);
+        }
+    }
+    
+    }
+    
+
+    window.addEventListener("load",listar);//una forma de hacer el onload
+</script>
+<body id="body">
+    <header>
+            <input type="text" id="txt1">
+            <input type="button" value="Enviar" id="btnEnviar">
+    </header>
+
+    
+        <h1>Lista de personas</h1>
+        <input type="button" value="Agregar Persona" id="btnAgregar" onclick="agregar()">
+    
+        <div>
+                <input type="text" id="txtNombre" value="nombre"><br><br>
+                <input type="text" id="txtApellido" value="apellido"><br><br>
+                <input type="text" id="txtTelefono" value="telefono"><br><br>
+                <input type="date" id="date"> <br><br>
+        </div>
+        <table border="1">
+                <thead>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Telefono</th>
+                    <th>fecha</th>
+                    <th>Accion</th>
+        
+                </thead>
+        
+                <tbody id="tbody">
+                    
+        
+                </tbody>
+        
+            </table>
+</body>
+
+
+</html>
