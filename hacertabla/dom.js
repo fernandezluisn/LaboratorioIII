@@ -1,5 +1,5 @@
 function hacerTabla(url){
-  window.addEventListener("load", function(){
+  
 
 
     var xml=new XMLHttpRequest();
@@ -14,48 +14,54 @@ function hacerTabla(url){
 
           var listaT=JSON.parse(s);
 
-          var listaClaves=listaT[0].keys;
+          var listaClaves=Object.keys(listaT[0]);
+          
+
+          console.log(listaClaves);
 
           var tabla=document.createElement("table");
+          
           var thead=document.createElement("thead");
-          var th=document.createElement("th");
+          var tr=document.createElement("tr");
+          
+          
+          
+
           body.appendChild(tabla);
           tabla.appendChild(thead);
+          thead.appendChild(tr);
 
           listaClaves.forEach(function(clave){
             var texto=document.createTextNode(clave);
+            var th=document.createElement("th");
             th.appendChild(texto);
-            thead.appendChild(th);
+            tr.appendChild(th);
           })
 
+          var tBody=document.createElement("tbody");
+          tabla.appendChild(tBody);
+
+
           listaT.forEach(function(objeto){
+            var tr=document.createElement("tr");
+            var listaClaves2=Object.keys(objeto);
+            tBody.appendChild(tr);
+            console.log(listaClaves2);
 
+            listaClaves2.forEach(function(clave){
+              var texto=document.createTextNode(objeto[clave]);
+              var td=document.createElement("td");
+              td.appendChild(texto);
+              tr.appendChild(td);
+            })
 
-          document.getElementById("tbody").innerHTML += "<tr><td>" + persona.nombre + "</td><td>" + persona.apellido + "</td><td>" + persona.telefono + "</td><td>" + persona.fecha + "</td><td>borrar</td></tr>";
       });
 
 
-    /*
-    var elemento=document.createElement("p");//<p></p>
-
-    var texto=document.createTextNode("Hola mundo");
-    elemento.appendChild(texto);
-    var body=document.getElementById("body");
-    body.appendChild(elemento);
-
-
-    xml.onreadystatechange=function(){
-        if(xml.readyState===4 && xml.status===200)
-        {
-            var s=xml.responseText;
-
-    var lista=JSON.parse(s);
-        lista.forEach(function(persona){
-            document.getElementById("tbody").innerHTML += "<tr><td>" + persona.nombre + "</td><td>" + persona.apellido + "</td><td>" + persona.telefono + "</td><td>" + persona.fecha + "</td><td>borrar</td></tr>";
-        });
-
+   
         }
     }
-    xml.send(); */
-  })
+    xml.send(); 
+  
 }
+

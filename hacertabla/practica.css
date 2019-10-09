@@ -1,0 +1,75 @@
+/*http://www.mclibre.org/consultar/htmlcss/css/css-bordes.html*/
+
+html {
+    min-height: 100%;
+    position: relative;    
+  }
+header{
+    position: static;
+    bottom: 0;
+    flex: 0 0 auto;
+    background-color:palevioletred;
+    width: 100%;
+    height: 1rem;
+    
+ }
+ 
+ table{
+     margin: 0.3rem;
+    border: black 0.1rem solid;
+    border-end-end-radius: 0.1rem;
+    
+ }
+
+ 
+ 
+ body{
+     background-color: aqua;
+ }
+
+ .main-content{
+    /* By setting flex-grow to 1, the main content will take up 
+    all of the remaining space on the page. 
+    The other elements have flex-grow: 0 and won't contest the free space. */
+    /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
+    flex: 1 0 auto;
+ }
+ 
+ footer{
+    position: absolute;
+    bottom: 0;
+    flex: 0 0 auto;
+    background-color:palevioletred;
+    width: 100%;
+    height: 1rem;
+ }
+
+.container{
+    text-align:center;
+    display:flex;
+    /*width: 50rem;*/
+    height: 30rem;
+    background: yellowgreen;
+    flex-direction: row;
+    justify-content: space-evenly;/*alinea como se justifican las columnas*/
+    align-items: flex-start;    
+
+    border-right: blue 5px outset;
+    border-left: red 5px solid;
+    border-top: black 5px dashed;
+    border-bottom: whitesmoke 5px dotted;
+   /* margin-left: 5rem;*/
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+}
+
+.sinMargen{
+    margin:0rem;
+}
+
+.item{    
+    width: 100%;/*poniendo 100% ocupan todo el contenedor*/
+    background: rgb(143, 99, 34); 
+    border: red 0.5rem solid;  
+   
+}
