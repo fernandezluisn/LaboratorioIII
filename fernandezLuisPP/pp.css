@@ -1,0 +1,37 @@
+.div{
+    position: relative;
+    display:flex; 
+
+    flex-direction: row;
+    justify-content: start;/*alinea como se justifican las columnas*/
+    align-items: flex-start;
+       
+    width: 3rem;
+    height: 20rem;
+}
+
+.item{    
+    width: 30%;/*poniendo 100% ocupan todo el contenedor*/
+    border-radius: 1rem; 
+    border: red 0.5rem solid;  
+   
+}
+
+.login{
+    position: absolute;		
+	top:30vh;
+    left:35%;
+    
+    display:flex;
+    background-color: rgb(49, 127, 146);
+    
+    flex-direction: column;
+    justify-content: space-evenly;/*alinea como se justifican las columnas*/
+    align-items: initial;   
+    
+    border-radius: 1rem;
+    border: 2rem solid rgb(49, 127, 146);
+
+    height: 15rem;
+    width: 14rem;
+}
