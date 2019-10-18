@@ -1,0 +1,49 @@
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+#body{
+    /*height: 60rem;
+    width: 100%;
+    position: absolute;
+    border-color: aqua;
+    flex-direction: row;
+    display: inline-table;*/
+    
+    /*con estas dos funciones se alinea*/
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 100vh;
+    
+}
+.tarjetas{
+    background-color: rgb(194, 178, 154);
+    
+    /*flex: 1 1 auto;si pongo esto se extienden las tarjetas
+    
+    position: relative;
+    */
+    
+    height: 16rem;
+    width: 24%;
+    font-size: 2rem;
+    margin: 3rem;
+    margin-right: 5rem;
+    align-content: center;
+    justify-content: center;
+    color: rgb(18, 75, 58);
+    overflow: auto;
+    border-radius: 3rem;
+    border: 0.5rem red solid;
+    
+    text-align: end;
+    font-size: 4rem;
+    padding: 1rem;/*da margenes interiores*/
+    
+    background-image: url("C:/Users/Nahuel/Desktop/practica examen/img/user.png");
+    background-position: left;
+    background-size: 10rem;
+    background-repeat: no-repeat;
+}
