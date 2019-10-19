@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+
+        //codigo viejo
+    window.addEventListener("load", function(){
+        console.log(document.getElementById("parrafo").innerHTML);
+
+        //jquery
+    console.log($("#parrafo").html());
+    //trae un array, string solo busca elementos o tag. con # busca con id, con . busca por clase
+    //mismos selectores que css
+    //función html reemplaza al innerhetml, si le paso parametros sobreescribe pero no devuelve.
+
+    $("#btn").dblclick(aca paso funcion);//es como un addeventlistener
+
+    $("document").ready(aca paso funcion);
+
+    //para recuperar valor de un input
+    var apellido=$("#txtApellido").val();
+    $("#btn").attr("id")//pasandole un parametro retorna valor de ese parametro, sirve como set atribute
+    });
+
+    //usar ayax con jquery, ver w3schools tiene get y post
+    </script>
+</head>
+<body>
+    <p id="parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis quos ex libero atque! Culpa, reprehenderit iusto, corporis est totam maxime consectetur sint repellat quia qui laboriosam aperiam veritatis minima itaque.</p>
+</body>
+<button id="btn">btn</button>
+</html>

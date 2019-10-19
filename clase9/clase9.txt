@@ -1,0 +1,20 @@
+usar npm
+guit bash here
+$ npm init -y
+
+permite descargar framework
+
+instalar jquery
+$ npm install jquery --save
+
+solo se guarda el pakage.json y el codigo nuestro
+
+para instalar nuevamente las dependencias 
+$ npm install
+
+jquery
+framework basado en js que acota las llamadas
+
+usamos jquery.min es más liviano
+incluirlo en el index.html para usar funciones
+<script src="direccion del jquery"></script>
