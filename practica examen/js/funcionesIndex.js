@@ -2,6 +2,8 @@ window.addEventListener("load",hacerDivs);
 
 function hacerDivs(){
   
+  var form=document.getElementById("form");
+  form.style.visibility="hidden";
 
     var n=0;
     var xml=new XMLHttpRequest();
@@ -51,7 +53,7 @@ function hacerDivs(){
               div.id="d"+n;
 
               
-             
+              div.addEventListener("dblclick", mostrar);
                 
                 n=n+1;
 
@@ -72,4 +74,57 @@ function hacerDivs(){
     }
     xml.send(); 
   
+}
+
+function ModificarPost(){
+    
+  var http=new XMLHttpRequest();
+  http.onreadystatechange=function(){
+      console.log("llegó respuesta", http.readyState, http.status);
+ // document.getElementById("spiner").style.display="block";
+      if(http.readyState==4){
+          if(http.status===200){
+
+              console.log("tenemos respuesta",http.responseText);
+
+              var resp=JSON.parse(http.responseText);
+
+              if (resp['autenticado']=="si")
+              {
+              console.log(resp.autenticado);
+              window.location.replace("index.html?name="+name);
+              }
+          }
+          /* funcion anonima. **/
+      }
+      }
+      
+      /*var pass=document.getElementById("pass").value;
+      var name=document.getElementById("txtUser").value;
+      console.log("pass:"+pass);
+      console.log("user:"+name);
+
+      if(name == "" || pass == "")
+      {
+      
+      alert("Debe ingresar email y password");
+      return;
+      }
+      
+      http.open("POST"," http://localhost:1337/postearNuevaEntrada");/* por defecto es true**/
+      /* En post lleva content type**/
+      //http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      //http.send(JSON.stringify("title="+title+"header="+header+"posttext="+postText+"author="+author));
+
+      
+  
+
+  
+  }
+
+  function mostrar(evento){
+    document.getElementById("form").style.visibility="visible"; 
+    var datos=evento.target;
+
+   
 }

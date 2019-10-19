@@ -1,3 +1,12 @@
+/*input[type=button]{
+se puede hacer así para agregar un estilo a todos los objetos de este tipo
+en doubleclick=abrir(event). habìa que pasar el event
+para recuperar variables despuès usar
+e.target.children[1].children[0].children[2].innerHtml;si no es innerhtml es value
+var padre=e.target.parentNode;
+padre.removeChild(e.target);
+}**/
+
 html{
     box-sizing: border-box;
     font-size: 62.5%;
@@ -26,6 +35,8 @@ html{
     position: relative;
     */
     
+    
+
     height: 16rem;
     width: 24%;
     font-size: 2rem;
@@ -42,8 +53,40 @@ html{
     font-size: 4rem;
     padding: 1rem;/*da margenes interiores*/
     
-    background-image: url("C:/Users/Nahuel/Desktop/practica examen/img/user.png");
+    background-image: url("C:/Users/alumno/Desktop/practica examen/img/user.png");
     background-position: left;
     background-size: 10rem;
     background-repeat: no-repeat;
+    background-position-x: 1rem;
+}
+
+.centrar{
+    margin-left: 40rem;
+    margin-top: 30rem;
+    position: absolute;
+    height: 30rem;
+    background-color: pink;
+    border-radius: 1rem;
+    border: 0.5rem black solid;
+    width: 40rem;
+    font-size: 2rem;
+}
+
+input[type=button]{
+    border-radius: 0.8rem;
+    background-color: aquamarine;
+    font: bold;
+    margin-left: 5rem;
+
+}
+
+input[type=text]{
+    margin-top: 3rem;
+    margin-left: 9rem;
+
+}
+input[type=radio]{
+    
+    margin-left: 6rem;
+
 }

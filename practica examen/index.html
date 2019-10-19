@@ -4,12 +4,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
+        <title>Recuperatorio</title>
         <script type="text/javascript" src="../practica examen/js/funcionesIndex.js"></script>
         <link rel="stylesheet" href="../practica examen/css/hojaIndex.css">
         </head>
         <body id="body">
+            <div id="form" class="centrar">
+                <form >
+                        
+                    <input type="text" class="txt" placeholder="Nombre" id="txtNom">
+                    <input type="text" class="txt" placeholder="Apellido" id="txtApe"><br><br>
+                    <input type="radio" value="Femenino" name="radio">femenino
+                    <input type="radio" value="Masculino" name="radio">masculino <br><br>
+                    
+                    
+                    <input type="button" value="eliminar" class="btn" id="btn1" onclick="eliminar()">
+                    <input type="button" value="modificar" class="btn" id="btn2" onclick="modificarPost(event)">
+                </form>
 
+            </div>
 
         </body>
     </html>
