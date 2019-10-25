@@ -1,11 +1,16 @@
 window.addEventListener("load",hacerDivs);
 
+/*
+https://www.anerbarrena.com/jquery-selectors-selectores-4768/
+*/
+
 function hacerDivs(){
   
   var form=document.getElementById("form");
   form.style.visibility="hidden";
+  $(".spinner").css("display", "none");
 
-    var n=0;
+    
     var xml=new XMLHttpRequest();
     xml.open("GET", "http://localhost:3000/personas");
 
@@ -26,42 +31,43 @@ function hacerDivs(){
             
             body.appendChild(div);
 
-            var br=document.createElement("br");
-            var br1=document.createElement("br");
+            
             var lb=document.createElement("label");
             var texto=document.createTextNode(objeto['nombre']);
               lb.appendChild(texto);
               div.appendChild(lb);
               
               
+              
               var lb1=document.createElement("label");
               var texto=document.createTextNode(objeto['apellido']);
               lb1.appendChild(texto);
-              div.appendChild(br);
+             
               div.appendChild(lb1);
-              div.appendChild(br1);
+              
               var lb2=document.createElement("label");
               var texto2=document.createTextNode(objeto['sexo']);
               lb2.appendChild(texto2);
               
               div.appendChild(lb2);
               
-
+             
+              
+              var lb3=document.createElement("label");
+              
+              
+              div.appendChild(lb3);
+              
+              lb3.setAttribute("value", objeto['id']);
+              lb3.setAttribute("class", "oculto");
               
               div.setAttribute("class", "tarjetas");
               
-              div.id="d"+n;
+              div.id="i"+objeto['id'];
 
               
-              div.addEventListener("dblclick", mostrar);
-                
-                n=n+1;
-
-               /*div.style.position="relative";modificar(listaT, objeto['nombre'], objeto['apellido'], objeto['sexo'], objeto['id'])
-                div.style.width="30%";
-                div.style.padding="0.3rem";
-                div.style.marginTop="0.1rem";
-                div.style.marginLeft="4rem";*/
+              div.addEventListener("dblclick", mostrar);               
+                  
 
                 
             
@@ -76,55 +82,115 @@ function hacerDivs(){
   
 }
 
-function ModificarPost(){
-    
-  var http=new XMLHttpRequest();
-  http.onreadystatechange=function(){
-      console.log("llegó respuesta", http.readyState, http.status);
- // document.getElementById("spiner").style.display="block";
-      if(http.readyState==4){
-          if(http.status===200){
+    function modificarPost(){
 
-              console.log("tenemos respuesta",http.responseText);
+      var nom=$("#txtNom").val();
+      var ape=$("#txtApe").val();
+      var idV=$("#lblId").html();
 
-              var resp=JSON.parse(http.responseText);
+      var sex=$('input[name=radio]:checked', '#myForm').val();      
 
-              if (resp['autenticado']=="si")
-              {
-              console.log(resp.autenticado);
-              window.location.replace("index.html?name="+name);
-              }
-          }
-          /* funcion anonima. **/
-      }
-      }
-      
-      /*var pass=document.getElementById("pass").value;
-      var name=document.getElementById("txtUser").value;
-      console.log("pass:"+pass);
-      console.log("user:"+name);
+      $(".spinner").css("display", "block");
 
-      if(name == "" || pass == "")
+      if(ape.length>3 && nom.length>3 && sex != null)
       {
-      
-      alert("Debe ingresar email y password");
-      return;
+        
+        $.post("http://localhost:3000/editar",
+        {
+          id: idV,
+          apellido: ape,
+          nombre: nom,
+          sexo: sex
+        },function(data, status){
+          console.log("Data: " + data + "\nStatus: " + status);
+
+          if(status=="success")
+          {       
+
+            
+            //$("#i"+idV+">lbl:second-of-type").val(ape);
+
+            $("#form").hide();//oculto el form con jquery
+            $(".spinner").css("display", "none");
+
+            //modifico los datos del div
+           
+            //para buscar el div uso el cambio de color
+            $("#i"+idV+">label:nth-child(1)").css("color","red");
+            
+            $("#i"+idV+">label:nth-child(1)").html(nom);
+            
+            $("#i"+idV+">label:nth-child(2)").html(ape);
+
+            $("#i"+idV+">label:nth-child(3)").html(sex);
+
+            
+          }
+          
+
+        }
+
+        )
+       
       }
-      
-      http.open("POST"," http://localhost:1337/postearNuevaEntrada");/* por defecto es true**/
-      /* En post lleva content type**/
-      //http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      //http.send(JSON.stringify("title="+title+"header="+header+"posttext="+postText+"author="+author));
-
-      
+      else
+      {
+        alert("Las cadenas de texto deben tener más de 3 caracteres.");
+      }
+    }
+    
   
-
-  
-  }
-
   function mostrar(evento){
     document.getElementById("form").style.visibility="visible"; 
-    var datos=evento.target;
+    $("#form").css("display", "block");
+    
+
+    var idC=evento.target.childNodes[3].getAttribute("value");
+    var sexo=evento.target.children[2].innerText;
+    
+    console.log(evento.target.childNodes[3]);
+    console.log(idC);
+    $("#txtNom").val(evento.target.childNodes[0].innerText);
+    $("#txtApe").val(evento.target.childNodes[1].innerText);
+    
+    $("#lblId").html(idC);
+
+   if(sexo=="Female")
+   {
+    $("#fem").prop('checked',true);
+   }
+   else
+   $("#mas").prop('checked',true);   
 
    
+   
+   $("#btnM").click(modificarPost);
+   $("#btnE").click(eliminarPost);
+}
+
+function eliminarPost(){
+  var idV=$("#lblId").html();  
+
+
+  $(".spinner").css("display", "block");
+
+  
+  $.post("http://localhost:3000/eliminar",
+  {
+    id: idV
+  },
+  function(data, status){
+    if(status=="success")
+    {    
+
+      $("#form").hide();//oculto el form con jquery
+      $(".spinner").css("display", "none");
+
+      //elimina el div
+      $("#i"+idV).remove();
+
+    }
+    
+  }
+  );
 }
