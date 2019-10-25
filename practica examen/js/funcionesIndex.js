@@ -10,76 +10,54 @@ function hacerDivs(){
   form.style.visibility="hidden";
   $(".spinner").css("display", "none");
 
-    
-    var xml=new XMLHttpRequest();
-    xml.open("GET", "http://localhost:3000/personas");
+$.get("http://localhost:3000/personas",function(data, status){
 
-    xml.onreadystatechange=function(){
-      if(xml.readyState===4 && xml.status===200)
-      {
-          var s=xml.responseText;
-
-          var body=document.getElementById("body");
-
-          var listaT=JSON.parse(s);     
-          
-
-          
-//hacer una funcion generica que haga esto
-          listaT.forEach(function(objeto){
-            var div=document.createElement("div");
-            
-            body.appendChild(div);
-
-            
-            var lb=document.createElement("label");
-            var texto=document.createTextNode(objeto['nombre']);
-              lb.appendChild(texto);
-              div.appendChild(lb);
-              
-              
-              
-              var lb1=document.createElement("label");
-              var texto=document.createTextNode(objeto['apellido']);
-              lb1.appendChild(texto);
-             
-              div.appendChild(lb1);
-              
-              var lb2=document.createElement("label");
-              var texto2=document.createTextNode(objeto['sexo']);
-              lb2.appendChild(texto2);
-              
-              div.appendChild(lb2);
-              
-             
-              
-              var lb3=document.createElement("label");
-              
-              
-              div.appendChild(lb3);
-              
-              lb3.setAttribute("value", objeto['id']);
-              lb3.setAttribute("class", "oculto");
-              
-              div.setAttribute("class", "tarjetas");
-              
-              div.id="i"+objeto['id'];
-
-              
-              div.addEventListener("dblclick", mostrar);               
-                  
-
-                
-            
-            
-      });
-
-
-   
-        }
-    }
-    xml.send(); 
   
+    if(status=="success")
+    {             
+    
+      data.forEach(function(objeto){
+          
+       var div=document.createElement("div");        
+        $("#body").append(div);        
+      var lb=document.createElement("label");
+       var texto=document.createTextNode(objeto['nombre']);
+      lb.appendChild(texto);
+      div.appendChild(lb);   
+    
+    
+      var lb1=document.createElement("label");
+      var texto=document.createTextNode(objeto['apellido']);
+      lb1.appendChild(texto);
+   
+      div.appendChild(lb1);
+    
+      var lb2=document.createElement("label");
+      var texto2=document.createTextNode(objeto['sexo']);
+      lb2.appendChild(texto2);
+    
+       div.appendChild(lb2);
+    
+   
+    
+        var lb3=document.createElement("label");
+    
+    
+        div.appendChild(lb3);
+    
+        lb3.setAttribute("value", objeto['id']);
+        lb3.setAttribute("class", "oculto");
+    
+        div.setAttribute("class", "tarjetas");
+    
+        div.id="i"+objeto['id'];
+
+    
+        div.addEventListener("dblclick", mostrar); 
+       });
+       }
+
+  });
 }
 
     function modificarPost(){
