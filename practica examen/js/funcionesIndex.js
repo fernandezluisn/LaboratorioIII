@@ -6,54 +6,67 @@ https://www.anerbarrena.com/jquery-selectors-selectores-4768/
 
 function hacerDivs(){
   
-  var form=document.getElementById("form");
-  form.style.visibility="hidden";
+  
+  $("#form").css("visibility", "hidden");
   $(".spinner").css("display", "none");
 
 $.get("http://localhost:3000/personas",function(data, status){
 
-  
+  var n=3;
     if(status=="success")
     {             
     
       data.forEach(function(objeto){
           
        var div=document.createElement("div");        
-        $("#body").append(div);        
-      var lb=document.createElement("label");
-       var texto=document.createTextNode(objeto['nombre']);
-      lb.appendChild(texto);
-      div.appendChild(lb);   
+        $("#body").append(div);   
+        $("#body>div:nth-child("+n+")").attr("id", "i"+objeto['id']);
+             
+
+        $("#body>div:nth-child("+n+")").attr("class", "tarjetas");
+
+        var lb=document.createElement("label");
+      
+
+        $("#body>div:nth-child("+n+")").append(lb);
+          
     
     
       var lb1=document.createElement("label");
-      var texto=document.createTextNode(objeto['apellido']);
-      lb1.appendChild(texto);
+      
    
-      div.appendChild(lb1);
+      $("#body>div:nth-child("+n+")").append(lb1);
     
       var lb2=document.createElement("label");
-      var texto2=document.createTextNode(objeto['sexo']);
-      lb2.appendChild(texto2);
+      
     
-       div.appendChild(lb2);
+      $("#body>div:nth-child("+n+")").append(lb2);
     
    
     
         var lb3=document.createElement("label");
     
     
-        div.appendChild(lb3);
+        $("#body>div:nth-child("+n+")").append(lb3); 
+        
+        
     
-        lb3.setAttribute("value", objeto['id']);
-        lb3.setAttribute("class", "oculto");
+        $("#i"+objeto['id']+">label:nth-child(1)").html(objeto['nombre']);
+            
+        $("#i"+objeto['id']+">label:nth-child(2)").html(objeto['apellido']);
+
+        $("#i"+objeto['id']+">label:nth-child(3)").html(objeto['sexo']);
+
+        $("#i"+objeto['id']+">label:nth-child(4)").attr("value", objeto["id"]);
+        
+        $("#i"+objeto['id']+">label:nth-child(4)").attr("class", "oculto");
     
-        div.setAttribute("class", "tarjetas");
-    
-        div.id="i"+objeto['id'];
+        
+        
 
     
         div.addEventListener("dblclick", mostrar); 
+        n++;
        });
        }
 
