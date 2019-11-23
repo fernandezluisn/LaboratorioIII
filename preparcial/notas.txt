@@ -1,0 +1,12 @@
+instalar jquery para typescript, pero llamar jquery comun en html
+
+npm install bootstrap
+npm install --save jquery
+npm init -y
+tsc ./funciones.ts -w
+npm i @types/jquery
+castear atributos
+ tsc ./*.ts
+
+
+ver tema columnas del bootstrap

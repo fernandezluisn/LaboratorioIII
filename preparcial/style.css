@@ -1,0 +1,37 @@
+body{
+    background-color: coral;
+}
+
+button{
+    background-color: cyan;
+    border-radius: 0.5rem;
+    width: 5rem;
+    font: bold;
+}
+
+
+
+
+
+#form{
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    flex-direction:column;
+}
+
+select{
+    width: 8rem;
+}
+
+#alumnoDiv{
+display: block;
+}
+
+#profesorDiv{
+    display: none;
+}
+
+input{
+    width: 8rem;
+}

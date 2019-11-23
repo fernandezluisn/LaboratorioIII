@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+    <html>
+    <head>        
+        <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="./persona.js"></script>
+        <script src="./alumno.js"></script>
+        <script src="./profesor.js"></script>
+        <script src="./funciones.js"></script>
+        <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+        <title>practica parcial</title>
+    </head>
+    <body>
+        <div id="form">
+        Nombre:<input type="text" id="txtNom"><br>
+        Apellido:<input type="text" id="txtApe"><br>
+        Tipo:<select id="tipo" onchange="preparcial.Mostrar()"><br>
+            <option value="alumno">Alumno</option>
+            <option value="profesor">Profesor</option>
+            </select><br>
+        <div id="alumnoDiv">
+            Legajo:<input type="number" id="n1"><br>
+        </div>
+        <div id="profesorDiv">
+            Cuil:<input type="number" id="n2"><br>
+        </div>
+        <br>   
+     
+     
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+                <button onclick="preparcial.Agregar()">Agregar</button>
+                <button  onclick="preparcial.Eliminar()">Eliminar</button>
+        </div>
+        <br>
+    
+    </div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Legajo/Cuil</th>
+        <th></th>
+    </tr>
+</thead>
+    <tbody>
+
+    </tbody>
+</table>
+    </body>
+</html>
