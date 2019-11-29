@@ -1030,32 +1030,54 @@ var datos =[
   // mas grande.
   
   lib.olderUser = function () {
-   return datos.reduce(function(item,older){
+   return datos.reduce(function(older,item){
     if( item.age>older.age)
     {
-      return [{age: item.age, name: item.name}];
+      return {name: item.name, age: item.age};
     }
     else
     return older;//no se puede no devolver nada
-    } ,{'age': 0, 'name':" "});
+    } ,{ 'name':" ", 'age': 0});
     
    
     };
 
   // Retornar el promedio de edad de los usuarios (number)
   lib.userAgeAverage = function () {
-  
+  var total= datos.reduce(function(tot, item){
+    return tot+item.age;
+  }, 0)
+
+  return total/datos.length;
   };
+
+  
 
   // Retornar el promedio de edad de los usuarios hombres (number)
   lib.userMaleAgeAverage = function () {
+    var lista= datos.filter(function(item){
+      return item.gender=="male";
+    })
     
+    var total= lista.reduce(function(tot, item){
+      return tot+item.age;
+    }, 0)
+  
+    return total/lista.length;
   
   };
 
   // Retornar el promedio de edad de los usuarios mujeres (number)
   lib.userFemaleAgeAverage = function () {
+    var lista= datos.filter(function(item){
+      return item.gender=="female";
+    })
+    
+    var total= lista.reduce(function(tot, item){
+      return tot+item.age;
+    }, 0)
   
+    return total/lista.length;
   };
 
   // Retornar un objeto  de etiquetas (tags)
