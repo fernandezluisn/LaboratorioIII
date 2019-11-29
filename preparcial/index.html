@@ -29,25 +29,57 @@
      
     </div>
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-left">
                 <button onclick="preparcial.Agregar()">Agregar</button>
-                <button  onclick="preparcial.Eliminar()">Eliminar</button>
+                
         </div>
         <br>
     
     </div>
-<table class="table">
+
+    
+    
+    <table class="table">
     <thead>
     <tr>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Legajo/Cuil</th>
+        <th id="th1">Nombre</th>
+        <th id="th2">Apellido</th>
+        <th id="th3">Legajo/Cuil</th>
         <th></th>
     </tr>
 </thead>
     <tbody>
 
     </tbody>
-</table>
+</table><br><br>
+<div class="container">
+        <div class="row justify-content-center">
+        <h2>Filtros</h2>
+        </div>
+        <div class="row justify-content-between">
+            Filtrar por:<select id="filtro" class="col-2 align-self-start" onchange="preparcial.Filtrar()">
+                    <option value="todos">Todos</option>
+                <option value="alumno">Alumnos</option>
+                <option value="profesor">Profesores</option>
+                </select>
+                Promedio de número: 
+           <input type="text" name="txtProm" id="txtProm" class="col-1 align-self-end" readonly="readonly" >
+           <input type="button" value="Calcular Promedio" id="btnProm" class="btn" onclick="preparcial.Promediar()">
+        </div>
+    </div><br><br>
+
+    <div class="container">
+            <div class="row justify-content-left">
+                    <h2>Campos Mostrados</h2> 
+                    </div>
+                    <div class="row">
+                            <h5>Tilde los campos que desea ver:</h5> 
+                            <div class="checkbox">
+                                    <label><input type="checkbox" id="filtroN" value="true" checked="checked" onchange="preparcial.Filtrar()">Nombre</label>
+                                    <label><input type="checkbox" id="filtroA" value="true" checked="checked" onchange="preparcial.Filtrar()">Apellido</label>
+                                    <label><input type="checkbox" id="filtroL" value="true" checked="checked" onchange="preparcial.Filtrar()">Legajo/Cuil</label>
+                            </div>
+                            </div>
+    </div>
     </body>
 </html>

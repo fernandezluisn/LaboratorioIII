@@ -1,5 +1,5 @@
 body{
-    background-color: coral;
+    background-color:cadetblue;
 }
 
 button{
@@ -7,9 +7,19 @@ button{
     border-radius: 0.5rem;
     width: 5rem;
     font: bold;
+    margin-right: 5rem;
 }
 
-
+.btn{
+    background-color: cyan;
+    border-radius: 0.5rem;
+    width: 10rem;
+    font: bold;
+    margin-right: 5rem;
+    box-sizing: border-box;
+    border-style: outset;
+    border-color: buttonface;
+}
 
 
 
@@ -34,4 +44,7 @@ display: block;
 
 input{
     width: 8rem;
+}
+h4{
+    font: normal;
 }
